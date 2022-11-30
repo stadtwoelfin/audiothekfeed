@@ -94,17 +94,19 @@ $rss[] = '<rss xmlns:content="http://purl.org/rss/1.0/modules/content/" version=
 </description>
 <pubDate>'.$info['items']['nodes'][0]['publicationStartDateAndTime'].'</pubDate>
 <generator>'.$Generator_Name.'</generator>
-<language>'.$Sprache.'</language>
-<image>';
+<language>'.$Sprache.'</language>';
 /*
 Die Bild-URL funktioniert derzeit noch nicht.
-//str_replace('{width}',200,$item['image']['url']
-*/
-$rss[] = '<url></url>
+
+<image>
+<url></url>
 <title>'.$Name_vom_Feed.'</title>
 <link>'.$Link_zur_Webseite.'</link>
 </image>
-<docs>http://blogs.law.harvard.edu/tech/rss</docs>';
+//str_replace('{width}',200,$item['image']['url']
+
+*/
+$rss[] = '<docs>http://blogs.law.harvard.edu/tech/rss</docs>';
 
 for($a=0;$a<count($info['items']['nodes']);$a++)
 
@@ -113,17 +115,20 @@ for($a=0;$a<count($info['items']['nodes']);$a++)
 	$rss[] =  '<item>
 <title>
 <![CDATA[ '.$item['title'].' ]]>
-</title>
-<image>
-<url></url>';
+</title>';
 /*
+
 Die Bild-URL funktioniert derzeit noch nicht.
-	str_replace('{width}',200,$item['image']['url']
-*/
-$rss[] = '<title><![CDATA['.htmlentities($item['title']).']]></title>
+
+<image>
+<url></url>
+<title><![CDATA['.htmlentities($item['title']).']]></title>
 <link>'.$item['sharingUrl'].'</link>
 </image>
-<link>'.$item['sharingUrl'].'</link>
+
+//str_replace('{width}',200,$item['image']['url']
+*/
+$rss[] = '<link>'.$item['sharingUrl'].'</link>
 <enclosure url="'.$item['audios'][0]['url'].'" length="'.$item['duration'].'" type="audio/mpeg"/>
 <guid>'.base64_encode($item['publicationStartDateAndTime']).'</guid>
 <description>
